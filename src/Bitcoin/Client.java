@@ -9,32 +9,21 @@ public class Client {
 	public static void main (String[] args) throws IOException{
 	
 		int port = 2000;
-		InetAddress ip = InetAddress.getLocalHost();
-		
-		try{
-			Socket sClient = new Socket(ip, port);						// On ouvre une connexion du client au serveur
+	
+		InetAddress ip = InetAddress.getLocalHost();			// Je récupère l'adresse IP locale
+		int i;
+	
+		Socket sClient = new Socket (ip, port);					// J'ouvre la connexion entre client et serveur
+	
+		for (i = 0 ; i < 50000 ; i++){						
 			
-			System.out.println("ip");
+			String str = Integer.toString(i);					// Je transforme mon chiffre en chaine de caractère
 			
-			int i;
-			
-			for (i = 0 ; i < 10000 ; i++){								// Le client envoie des valeurs en continu au serveur
-				String str = Integer.toString(i);
-				
-				sClient.getOutputStream().write(str.getBytes());  		// On envoie le nombre sous forme de char
-			}
-			
-			sClient.close();
-		}
-		catch(IOException e){
-			System.out.println("Vous ne pouvez pas vous connecter");
+			sClient.getOutputStream().write(str.getBytes());	// Je l'envoie au serveur
 		}
 		
-		
-		
+		sClient.close();
+	
 	}
-	
-
-	
 	
 }
