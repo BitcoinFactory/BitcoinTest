@@ -32,11 +32,6 @@ public class Serveur {
 				Thread t = new Thread(new Runnable(){
 					public void run(){
 						do{
-							try {
-								os.write("Entrez un nombre suseptible de fonctionner:".getBytes());
-							} catch (IOException e) {
-								e.printStackTrace();
-							}
 							String nombre = sc.nextLine();
 							System.out.println(nombre);
 							/*if(existeEnBDD(nombre)){
@@ -46,9 +41,11 @@ public class Serveur {
 								os.write("Bravo, ce nombre n'avait pas été trouvé, félicitation".getBytes());
 								//TODO ajoutEnBDD(nombre);
 							}*/
-						}while(sc.hasNext());
+						}while(sc.hasNextLine());
 					}
 				});
+				
+				t.run();
 				
 			}
 			

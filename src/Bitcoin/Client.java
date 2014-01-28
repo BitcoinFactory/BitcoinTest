@@ -15,12 +15,12 @@ public class Client {
 	
 		Socket sClient = new Socket (ip, port);					// J'ouvre la connexion entre client et serveur
 	
-		//for (i = 0 ; i < 50000 ; i++){						
+		for (i = 0 ; i <= 10 ; i++){						
 			
 			String str = Integer.toString(i);					// Je transforme mon chiffre en chaine de caractère
 			
 			sClient.getOutputStream().write((str+'\n').getBytes());	// Je l'envoie au serveur
-		//}
+		}
 		
 		sClient.close();
 	
