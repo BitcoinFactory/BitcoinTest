@@ -17,13 +17,13 @@ public class Serveur {
 		Serveur boo=new Serveur();
 		
 		try{
-			sSocket = new ServerSocket(62000);
+			sSocket = new ServerSocket(62002);
+			System.out.println("Le serveur est initialisé");
 			
-			boolean test = true;
-
-			while(test == true){
+			while(true){
 				
 				Socket s = sSocket.accept();
+				System.out.println("Le serveur accepte la co");
 				
 				InputStream is=s.getInputStream();
 				final Scanner sc=new Scanner(is);
@@ -37,7 +37,7 @@ public class Serveur {
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
-							String nombre = sc.next();
+							String nombre = sc.nextLine();
 							System.out.println(nombre);
 							/*if(existeEnBDD(nombre)){
 								os.write("Dommage, le nombre à déjà été trouvé, essaie encore".getBytes());
@@ -51,6 +51,9 @@ public class Serveur {
 				});
 				
 			}
+			
+			// sSocket.close();				// Il faudra trouver un moyen de fermer proprement
+		
 		}
 		catch(BindException b){
 			System.out.println("La connexion était déjà ouverte");

@@ -8,19 +8,19 @@ public class Client {
  
 	public static void main (String[] args) throws IOException{
 	
-		int port = 62000;
+		int port = 62002;
 	
-		InetAddress ip = InetAddress.getLocalHost();			// Je récupère l'adresse IP locale
-		int i;
+		InetAddress ip = InetAddress.getByName("127.0.0.1");	// Je récupère l'adresse IP du serveur
+		int i = 1000;
 	
 		Socket sClient = new Socket (ip, port);					// J'ouvre la connexion entre client et serveur
 	
-		for (i = 0 ; i < 50000 ; i++){						
+		//for (i = 0 ; i < 50000 ; i++){						
 			
 			String str = Integer.toString(i);					// Je transforme mon chiffre en chaine de caractère
 			
-			sClient.getOutputStream().write(str.getBytes());	// Je l'envoie au serveur
-		}
+			sClient.getOutputStream().write((str+'\n').getBytes());	// Je l'envoie au serveur
+		//}
 		
 		sClient.close();
 	
