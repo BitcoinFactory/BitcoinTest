@@ -8,7 +8,7 @@ public class Client {
  
 	public static void main (String[] args) throws IOException{
 	
-		int port = 2000;
+		int port = 62000;
 	
 		InetAddress ip = InetAddress.getLocalHost();			// Je récupère l'adresse IP locale
 		int i;
