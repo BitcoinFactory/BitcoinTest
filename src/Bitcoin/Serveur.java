@@ -29,19 +29,21 @@ public class Serveur {
 			
 			Thread t = new Thread(new Runnable(){
 				public void run(){
-					try {
-						os.write("Entrez un nombre suseptible de fonctionner:".getBytes());
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-					int nombre= sc.nextInt();
-					/*if(existeEnBDD(nombre)){
-						os.write("Dommage, le nombre à déjà été trouvé, essaie encore".getBytes());
-					}
-					else{
-						os.write("Bravo, ce nombre n'avait pas été trouvé, félicitation".getBytes());
-						//TODO ajoutEnBDD(nombre);
-					}*/
+					do{
+						try {
+							os.write("Entrez un nombre suseptible de fonctionner:".getBytes());
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						String nombre= sc.next();
+						/*if(existeEnBDD(nombre)){
+							os.write("Dommage, le nombre à déjà été trouvé, essaie encore".getBytes());
+						}
+						else{
+							os.write("Bravo, ce nombre n'avait pas été trouvé, félicitation".getBytes());
+							//TODO ajoutEnBDD(nombre);
+						}*/
+					}while(sc.hasNext());
 				}
 			});
 			
